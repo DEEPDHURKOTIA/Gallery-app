@@ -1,0 +1,56 @@
+<form class="d-flex ms-auto justify-content-center mt-2">
+    <%= search_form_for @q, url: root_path do |f|%>
+      <%= f.search_field :tags_name_eq , placeholder: "Search By Tag"%>
+      <%= f.submit "Search", class:"btn btn-primary ms-1" %>
+    <% end %>
+  </form>
+<br>
+<h1 class="text-center text-success mt-1">Here You Can View published Albums</h1><br>
+<div class="container">
+
+<div class="row">
+  <% @albums.each do |album| %>
+  <%# <% if album.publish ==true %>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header bg-white">
+          <div class="text-center text-info"> 
+            <strong>Title:</strong>
+            <%=album.title%>
+          </div>
+        </div>
+        <div class="card-body">
+          <% if album.cover_image.attached? %>
+            <%= link_to album do%>
+              <%=image_tag(album.cover_image, class: "img-fluid") %>
+            <%end%>
+          <%end%>
+        </div>
+        <div class="card-footer text-info bg-white">
+        <div>
+          <strong> Tag:</strong>
+          <%=album.all_tags%>
+        </div>
+       <div class="pl">
+          <strong>Description:</strong>
+           <%=album.desc%>
+        </div>
+        <div class="pl">
+          <strong>Total Images: </strong>
+           <%=album.images.count%>
+        </div>
+        <div class="pl">
+          <strong>Created at :</strong>
+           <%=album.created_at.time %>
+        </div>
+        </div>
+        <%# <span> %>
+        <%# <%= link_to "Edit" , edit_album_path(album), class:"btn btn-white text-warning text-decoration-underline", style:"float:left;" %>
+        <%# <%= button_to "Delete" , album_path(album) , method: :delete, data: {confirm: 'Are you Sure?' },class:"btn btn-white text-danger text-decoration-underline" ,  style:"float:right;" %>
+        <%# <span> %>
+      </div>
+    </div>
+  <% end %>
+<%# <%end%> 
+  </div>
+</div>  

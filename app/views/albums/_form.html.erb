@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center container">
+  <%= form_with model: album do |form| %>
+    <div class="form-group ">
+      <%= form.label :title, class:"ms-2 text-warning fs-5"  %>
+      <%= form.text_field :title ,class:"form-control w-100 text-info",placeholder:"Please enter title of Album"%>
+      <% album.errors.full_messages_for(:title).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= form.label :desc, class:"ms-2 text-warning fs-5" %>
+      <%= form.text_field :desc,class:"form-control w-100 text-info",placeholder:"Please enter description of Album"%>
+      <% album.errors.full_messages_for(:desc).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= form.label :Tag, class:"ms-2 text-warning fs-5" %>
+      <%= form.text_field :all_tags,class:"form-control w-100 text-info",placeholder:"Please enter Tag for Album"%>
+      <% album.errors.full_messages_for(:all_tags).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= form.label :cover_image, class:"ms-2 text-warning fs-5" %>
+      <%= form.file_field :cover_image ,class:"form-control w-100"%>
+      <% album.errors.full_messages_for(:cover_image).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= form.label :images, class:"ms-2 text-warning fs-5" %>
+      <%= form.file_field :images, multiple: true ,class:"form-control w-100" %>
+      <% album.errors.full_messages_for(:images).each do |message| %>
+        <div class="text-danger"><%= message %> </div>
+      <% end %>
+    </div>
+
+    <div class="form-group mt-2 ms-2 text-warning fs-5">
+      <%= form.check_box :publish, {}, true,false%>
+      <%=form.label "Publish" %><br>
+    </div>
+
+    <div class=" mt-2 d-flex justify-content-center container">
+      <%= form.submit "Submit", class:"text-info"%>
+    </div>
+  <% end %>
+</div>
