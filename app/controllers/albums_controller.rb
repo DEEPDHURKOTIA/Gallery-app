@@ -18,7 +18,7 @@ class AlbumsController < ApplicationController
     @album = current_user.albums.new(album_params)
 
     if @album.save
-      NewPublishMailer.publish_mail(current_user.email).deliver_now if @album.publish?
+      NewPublishMailer.publish_mail(current_user.email).deliver_later if @album.publish?
       redirect_to @album
     else
       render :new, status: :unprocessable_entity
