@@ -56,5 +56,4 @@ class AlbumsController < ApplicationController
     def album_params
       params.require(:album).permit(:title, :desc, :all_tags ,:publish, :cover_image, images: [])
     end
-
 end

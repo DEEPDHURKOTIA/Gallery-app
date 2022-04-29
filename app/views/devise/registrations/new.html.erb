@@ -27,9 +27,13 @@
   </div>
 
   <div class="container mt-3 d-flex justify-content-center fs-5">
-    <%= f.submit "Sign up",class:"text-info border-0 bg-white text-decoration-underline" %>
+    <%= f.submit "Sign up",class:"text-white border-0  btn btn-success" %>
   </div>
+   <div class="container mt-3 d-flex justify-content-center fs-5">
+  <%= link_to "Log in", new_session_path(resource_name), class:" btn btn-danger  " %>
+</div>
 <% end %>
+
 </div>
 <div class="container mt-3 d-flex justify-content-center me-4 fs-5">
 <%= render "devise/shared/links" %>
